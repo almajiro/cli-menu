@@ -18,7 +18,12 @@ trait SelectableTrait
     /**
      * @var bool
      */
-    private $showItemExtra = false;
+    private $showItemExtra = true;
+
+    /**
+     * @var string
+     */
+    private $extraText = '';
 
     /**
      * @var bool
@@ -33,7 +38,7 @@ trait SelectableTrait
         $marker = sprintf("%s", $style->getMarker($selected));
 
         $length = $style->getDisplaysExtra()
-            ? $style->getContentWidth() - (mb_strlen($style->getItemExtra()) + 2)
+            ? $style->getContentWidth() - (mb_strlen($this->extraText) + 2)
             : $style->getContentWidth();
 
         $rows = explode(
@@ -50,7 +55,7 @@ trait SelectableTrait
 
             if ($key === 0) {
                 return $this->showItemExtra
-                    ? sprintf('%s%s  %s', $text, str_repeat(' ', $length - mb_strlen($row)), $style->getItemExtra())
+                    ? sprintf('%s%s  %s', $text, str_repeat(' ', $length - mb_strlen($row)), $this->extraText)
                     : $text;
             }
 

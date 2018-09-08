@@ -17,12 +17,12 @@ class SelectableItem implements MenuItemInterface
     public function __construct(
         string $text,
         callable $selectAction,
-        bool $showItemExtra = false,
+        string $extraText = null,
         bool $disabled = false
     ) {
         $this->text          = $text;
         $this->selectAction  = $selectAction;
-        $this->showItemExtra = $showItemExtra;
+        $this->extraText     = $extraText;
         $this->disabled      = $disabled;
     }
 

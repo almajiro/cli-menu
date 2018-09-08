@@ -93,10 +93,10 @@ class CliMenuBuilder
     public function addItem(
         string $text,
         callable $itemCallable,
-        bool $showItemExtra = false,
+        string $extraText = null,
         bool $disabled = false
     ) : self {
-        $this->addMenuItem(new SelectableItem($text, $itemCallable, $showItemExtra, $disabled));
+        $this->addMenuItem(new SelectableItem($text, $itemCallable, $extraText, $disabled));
 
         return $this;
     }
